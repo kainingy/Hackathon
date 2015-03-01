@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+
+		 <div class="sticky-sidebar-container">
+		    <!-- the nav element itself has logic applied to it that will move it up and down the page -->
+		    <div class="sticky-sidebar-nav" >
+		      <nav>
+		        <ul class="sticky-sidebar-nav-items">
+		          <li><a href="#"><span class="glyphicon glyphicon-home orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#description"><span class="glyphicon glyphicon-info-sign orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#rating"><span class="glyphicon glyphicon-star orange" style="font-size: 3em;"></span></a></li>
+		        </ul>
+		      </nav>
+		    </div>
+		  </div>
+
+
+		<header style="background-image: url(/static/download3.jpg); height: 700px; color:#FA7F13">
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>{{data}}<br/><br/><hr>
+			<h3>{{data.organization }}</h3>
+			<h3>Time: {{data.time }}</h3>
+
+		</header>
+
+
+	
+
+
+
+		<div id="description" style="background: #FFF2DE">
+			<br/><br/><br/>
+			<h1 style="text-align: center; color: #FA7F13; font-size: 60px">Description</h1>
+			<hr><br/>
+			<section><h4 style="line-height: 200%; text-align: center">
+				{{data.description}}</h4><br/><br/>
+			</section>
+
+		</div>
+
+
+
+		<div id="rating">
+			<br/><br/><br/>
+				<h1 style="text-align: center; color: #FA7F13; font-size: 60px">Rating</h1>
+				<hr><br/>
+			<section style="max-width: 800px">
+				<div class="row">
+					<div class="col-md-6"><div id="chart_div"></div></div>
+					<div class="col-md-6"><div id="chart_div1"></div></div>
+					<div class="col-md-6"><div id="chart_div2"></div></div>
+					<div class="col-md-6"><div id="chart_div3"></div></div>
+				</div>
+			</section>
+		</div>
+
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" style="top:20%; width:300px">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form style="height: 180px">
+				  <div class="form-group">
+				    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+				    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
+				  </div>
+				  <div class="form-group">
+				    <label class="sr-only" for="exampleInputPassword3">Password</label>
+				    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+				  </div>
+				   <div class="text-center">
+					  <div class="checkbox">
+					    <label>
+					      <input type="checkbox"> Remember me
+					    </label>
+					  </div>
+					  <div style='width:100%'>
+					  <a href="organization.html" class="btn btn-default" role="button" style="background: #FA7F13; color: white; margin: 0 auto;">Sign in</a>
+					</div>
+					</div>
+				</form>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+
+		
+
+
+		<footer id="end"><section style="height: 5px"></section></footer> 
+
+	</body>
+</html>
+{%endblock%}

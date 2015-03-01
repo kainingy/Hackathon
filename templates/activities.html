@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<h1>wrong</h1>
+
+		<div id="activity">
+			<br/><br/><br/>
+			<h1 style="text-align: center; color: #FA7F13; font-size: 60px">Activities</h1>
+			<hr><br/>
+			<section>
+				<div class="row">
+					{%for act in data%}
+				  <div class="col-md-4"><a id='text-center' class="btn btn-primary btn-lg btn-block outline" style="width: 200px; height: 100px; line-height: 75px;" href="/activity/{{ act }}">{{act.organization}} : {{act}} </a><br/></div>
+					{%endfor%}		  				  				  				  				  				  
+				</div>
+			</section>
+
+		</div>
+
+
+{% endblock %}

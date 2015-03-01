@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+		 <div class="sticky-sidebar-container">
+		    <!-- the nav element itself has logic applied to it that will move it up and down the page -->
+		    <div class="sticky-sidebar-nav" >
+		      <nav>
+		        <ul class="sticky-sidebar-nav-items">
+		          <li><a href="#"><span class="glyphicon glyphicon-home orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#description"><span class="glyphicon glyphicon-info-sign orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#activity"><span class="glyphicon glyphicon-list-alt  orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#rating"><span class="glyphicon glyphicon-star orange" style="font-size: 3em;"></span></a></li>
+		        </ul>
+		      </nav>
+		    </div>
+		  </div>
+
+
+		<header style="background-image: url(/static/download2.jpg); height: 700px; color:#FA7F13">
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>{{ data.name}}<br/><br/><hr>
+			<h4>{{ data.website }}</h4>
+		</header>
+
+
+
+
+
+		<div id="description">
+			<br/><br/><br/>
+			<h1 style="text-align: center; color: #FA7F13; font-size: 60px">Description</h1>
+			<hr><br/>
+			<section><h4 style="line-height: 200%; text-align: center">
+				{{ data.description }}</h4><br/><br/>
+				<a type="button" class="btn btn-warning btn-lg btn-block" style="width: 200px; margin: 0 auto" href = "{{data.website}}">Contact Us</a>
+			</section>
+
+		</div>
+
+
+
+		<div id="activity">
+			<br/><br/><br/>
+			<h1 style="text-align: center; color: #FA7F13; font-size: 60px">Activities</h1>
+			<hr><br/>
+			<section>
+				<div class="row">
+					{%for a in act %}
+				  <div class="col-md-4"><a id='text-center' class="btn btn-primary btn-lg btn-block outline" style="width: 200px; height: 100px; line-height: 75px;" href="/activity/{{ a }}"> {{a}} </a><br/></div>
+					{%endfor%}		  				  				  				  				  				  
+				</div>
+			</section>
+
+		</div>
+
+
+		<div id="rating">
+			<br/><br/><br/>
+				<h1 style="text-align: center; color: #FA7F13; font-size: 60px">Rating</h1>
+				<hr><br/>
+			<section style="max-width: 800px">
+				<div class="row">
+					<div class="col-md-6"><div id="chart_div"></div></div>
+					<div class="col-md-6"><div id="chart_div1"></div></div>
+					<div class="col-md-6"><div id="chart_div2"></div></div>
+					<div class="col-md-6"><div id="chart_div3"></div></div>
+				</div>
+			</section>
+		</div>
+
+
+		<footer id="end"><section style="height: 5px"></section></footer> 
+
+{% endblock %}

@@ -12,21 +12,13 @@ class QuestionInline(admin.TabularInline):
 class SurveyAdmin(admin.ModelAdmin):
 	inlines = [QuestionInline]
 
-class AnswerBaseInline(admin.StackedInline):
-	fields = ('question', 'body')
-	readonly_fields = ('question',)
-	extra = 0
-
-class RateInLine(AnswerBaseInline):
-	model = Rate
 
 class AnswerAdmin(admin.ModelAdmin):
-	list_display = ('created',)
-	inlines = [RateInLine] 
+	model = Rate
 	# specifies the order as well as which fields to act on 
-	readonly_fields = ('survey', 'created')
+	readonly_fields = ('question', 'body')
 
 admin.site.register(Organization) 
 admin.site.register(Activity)
 admin.site.register(Survey, SurveyAdmin)
-admin.site.register(Answer, AnswerAdmin)
+admin.site.register(Rate, AnswerAdmin)

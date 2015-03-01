@@ -1,52 +1,37 @@
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<meta name="title" content="Home"/>
-		<meta name="description" content="Las Vegas Discount Comedy Show Tickets Website"/>
-		<meta name="keywords" content="Las Vegas discount cheap comedy show tickets"/>
-
-		<title>Title</title>
-
-		<!-- Bootstrap core CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css">
-		<link href="http://ucicssa.org/style.css" rel="stylesheet" />
-
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-		<script src="http://ucicssa.org/jquery.js"></script>
+{% extends "base.html" %}
+{% load staticfiles %}
 
 
-		
-		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
-		
-
-
-	</head>
-
-	<body>
-
-		<nav class="fixed-nav-bar">
-			<ul>
-				<li><a data-toggle="modal" href="#myModal" style="color">Login</a></li>
-				<li><a href="#signup">Sign Up</a></li>
-				<li><a href="#organization">Organization</a></li>
-				<li><a href="#information">Information</a></li>
-			</ul>
-		</nav>
+{% block content %}
+<!-- ********************************************************************************************** -->
+		 <div class="sticky-sidebar-container">
+		    <!-- the nav element itself has logic applied to it that will move it up and down the page -->
+		    <div class="sticky-sidebar-nav" >
+		      <nav>
+		        <ul class="sticky-sidebar-nav-items">
+		          <li><a href="#"><span class="glyphicon glyphicon-home orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#information"><span class="glyphicon glyphicon-info-sign orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#organization"><span class="glyphicon glyphicon-briefcase orange" style="font-size: 3em;"></span></a></li>
+		          <li><a href="#end"><span class="glyphicon glyphicon-blackboard orange" style="font-size: 3em;"></span></a></li>
+		        </ul>
+		      </nav>
+		    </div>
+		  </div>
 
 
-		<header>
-			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Title<br/><hr>
+		<header style="color:#FA7F13">
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<div class="jumbotron vertical-center" style="border-radius: 25px; margin-left: 200px; margin-right:200px; background: rgba(255, 255, 255, 0.5); color: #FA7F13">Organization Planner</div>	
 		</header>
 
 
+
+
+
+
+
+
+<!-- ************************************************************************************************* -->
 
 
 
@@ -54,30 +39,43 @@
 			<br/><br/><br/>
 			<h1 style="text-align: center; color: #FA7F13; font-size: 60px">information</h1>
 			<hr><br/>
+			<section>
+				<div class="row">
+					<div class="col-md-4">
+						<h1>HOW</h1>
+						<p>Our database stores all your information. All your events and meetings will be recorded, and they can be accessed at any time! As a user, you can check attendance from previous meetings, read feedback from surveys, and view other information that is beneficial to your organization. Organization Planner also quickly creates invitations, notifications, or surveys for you by using Google forms. With our website, any organization can setup events.</p>
+					</div>
+					<div class="col-md-4">
+						<h1>WHY</h1>
+						<p>Creating events and meetings and recording attendance can be tiresome. Organization Planner eases this burden. This web application creates invitations and surveys for users, making the first step of organizing an even quick and easy. This application also records data from meetings, which users can access at any time. With Organization Planner, organizations can quickly get the word out and have more time to plan their memorable events.</p>
+					</div>
+					<div class="col-md-4">
+						<h1>WHAT</h1>
+						<p>Organization is an extension of your team, helping you create functional, approachable, responsive web applications and interfaces. Our collaborative strategy, design, and development approach ensures that we deliver the right product for your users.Organization is an extension of your team.</p>
+					</div>
+			</section>
 
 		</div>
 
 
+		<div id="middle">
+			<section>Technology</section>
+		</div>
 
 
 		<div id="organization">
 			<br/><br/><br/>
 			<h1 style="text-align: center; color: #FA7F13; font-size: 60px">Organization</h1>
 			<hr><br/>
-
-		</div>
-
-
-
-		<div id="signup">
-			<br/><br/><br/>
 			<section>
-				<button type="button" class="btn btn-warning btn-lg btn-block" id="inner_div">Sign Up</button>
+				<div class="row">
+					{%for org in data%}
+				  <div class="col-md-4"><a id='text-center' class="btn btn-primary btn-lg btn-block outline" style="width: 200px; height: 100px; line-height: 75px;" href="/company/{{ org }}">{{org}}</a><br/></div>
+					{%endfor%}		  				  				  				  				  				  
+				</div>
 			</section>
+
 		</div>
-
-
-
 
 
 
@@ -90,7 +88,7 @@
 		        <h4 class="modal-title" id="myModalLabel">Log In</h4>
 		      </div>
 		      <div class="modal-body">
-		        <form class="form">
+		        <form style="height: 180px">
 				  <div class="form-group">
 				    <label class="sr-only" for="exampleInputEmail3">Email address</label>
 				    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
@@ -105,8 +103,9 @@
 					      <input type="checkbox"> Remember me
 					    </label>
 					  </div>
-					  <button href="#" type="submit" class="btn btn-default" data-dismiss="modal" style="background: #FA7F13; color: white">Sign in</button>
-					  <!-- <a href="#" class="btn btn-default" role="button" style="background: #FA7F13; color: white">Sign in</a> -->
+					  <div style='width:100%'>
+					  <a href="organization.html" class="btn btn-default" role="button" style="background: #FA7F13; color: white; margin: 0 auto;">Sign in</a>
+					</div>
 					</div>
 				</form>
 		      </div>
@@ -117,10 +116,20 @@
 
 
 
-		
 
+		<footer id="end">
+			<h1>Development Team</h1>
 
-		<footer></footer> 
+			<div style="max-width:1000px; margin: auto">
+			<div class="row">
+				<div class="col-md-3"><img src="{{ STATIC_URL }}1.jpg" alt="Responsive image" class="img-circle"><h4>Kishan Rajasekhar</h4></div>
+				<div class="col-md-3"><img src="{{ STATIC_URL }}2.jpg" alt="Responsive image" class="img-circle"><h4>Kaining Yang</h4></div>
+				<div class="col-md-3"><img src="{{ STATIC_URL }}3.jpg" alt="Responsive image" class="img-circle"><h4>Fengling Zhou</h4></div>
+				<div class="col-md-3"><img src="{{ STATIC_URL }}4.jpg" alt="Responsive image" class="img-circle"><h4>John Ko</h4></div>
+			</div>
+	
 
-	</body>
-</html>
+			</div>
+
+		</footer> 
+{% endblock %}
