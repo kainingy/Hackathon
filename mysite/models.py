@@ -1,30 +1,62 @@
 from django.db import models
-from django.db import models
 from django.core.urlresolvers import reverse
-from django.contrib.sites.models import Site
-from django import forms 
-from django.forms.widgets import *
 
 # Create your models here.
-class Organizations(models.Model):
+class Survey(models.Model):
+	Category = models.CharField(max_length = 100)
+
+
+	def __unicode__(self):
+		return (self.Category)
+
+	def questions(self):
+		if self.pk:
+			return Question.objects.fliter(Survey=self.pk)
+		else:
+			return None
+
+class Organization(models.Model):
 	name = models.CharField(max_length = 100)
 	description = models.TextField()
+	website = models.URLField(null = True)
+	survey = models.ForeignKey('Survey', null = True)
 
-class Surveys(models.Model):
-	RATING = (
-		('1', "Poor"),
-		('2',"Below Average"),
-		('3',"Average"),
-		('4',"Above Average"),
-		('5', "Excellent"),
-		)
-	org = models.ForeignKey('Organizations')
-	rating1 = models.PositiveIntegerField(choices = RATING)
-	rating2 = models.PositiveIntegerField(choices = RATING)
-	rating3 = models.PositiveIntegerField(choices = RATING)
+	def __unicode__(self):
+		return (self.name)
+
+class Activity(models.Model):
+	title = models.CharField(max_length = 100)
+	organization = models.ForeignKey('Organization')
+	time = models.DateField(null = True) 
+	description = models.TextField()
+
+	survey = models.ForeignKey('Survey', null = True)
+
+	def __unicode__(self):
+		return (self.title)
 
 
+class Question(models.Model):
+	survey = models.ForeignKey('Survey')
+	text = models.TextField()
 
+	def save(self, *args, **kwargs):
+		super(Question, self).save(*args, **kwargs)
+
+	def __unicode__(self):
+		return (self.text)
+
+class Answer(models.Model):
+	created = models.DateTimeField(auto_now_add = True)
+	survey = models.ForeignKey('Survey')
+
+class AnswerBase(models.Model):
+	question = models.ForeignKey('Question')
+	answer = models.ForeignKey('Answer')
+	created = models.DateTimeField(auto_now_add=True)
+
+class Rate(AnswerBase):
+	body = models.IntegerField(blank = True, null = True)
 
 
 

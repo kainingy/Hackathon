@@ -29,14 +29,21 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+ACCOUNT_ACTIVATION_DAYS = 2
+EMAIL_HOST = 'localhost'
+DEFAULT_FROM_EMAIL = '896736975@qq.com'
+LOGIN_REDIRECT_URL = '/'
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
+    # 'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mysite',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -53,6 +60,11 @@ ROOT_URLCONF = 'hackathon.urls'
 
 WSGI_APPLICATION = 'hackathon.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER='896736975@qq.com'
+EMAIL_HOST_PASSWORD='x.alonso14'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -81,8 +93,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+STATIC_DIR = (
+    os.path.join(SITE_ROOT, 'static/'))
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static/'
