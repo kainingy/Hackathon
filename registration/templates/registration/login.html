@@ -4,6 +4,10 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block content %}
+<br/><br/><br/><br/>
+<div class="container">
+    <center>
+    <h1> Log In </h1><br/>
 <form method="post" action="">
     {% csrf_token %}
     {{ form.as_p }}
@@ -13,6 +17,8 @@
 
 <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
 <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+</center>
+</div>
 {% endblock %}
 
 

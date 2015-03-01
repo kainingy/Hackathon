@@ -35,6 +35,7 @@ DEFAULT_FROM_EMAIL = '896736975@qq.com'
 LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     # 'django.contrib.sites',
